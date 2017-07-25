@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git初始化 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="每次安装完系统，然后就是安装各种各样的东西，遇到不会的就去baidu，真是浪费时间，现在把问题搜集起来，尽量记着. 安装完Git，首先肯定是要初始化一下. 1.生成SSH-key生成一个ssh的key是必须的了，否则提交代码还得输入用户名跟密码. 执行命令：1$ ssh-keygen -t rsa -C &quot;you_email@you_email.com&quot; 然后一路回车下去就ok了，需要时把~/.s">
+<meta name="keywords" content="Git,初始化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git初始化">
+<meta property="og:url" content="http://yoursite.com/2015/07/23/Git初始化/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="每次安装完系统，然后就是安装各种各样的东西，遇到不会的就去baidu，真是浪费时间，现在把问题搜集起来，尽量记着. 安装完Git，首先肯定是要初始化一下. 1.生成SSH-key生成一个ssh的key是必须的了，否则提交代码还得输入用户名跟密码. 执行命令：1$ ssh-keygen -t rsa -C &quot;you_email@you_email.com&quot; 然后一路回车下去就ok了，需要时把~/.s">
+<meta property="og:updated_time" content="2017-07-23T15:23:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git初始化">
+<meta name="twitter:description" content="每次安装完系统，然后就是安装各种各样的东西，遇到不会的就去baidu，真是浪费时间，现在把问题搜集起来，尽量记着. 安装完Git，首先肯定是要初始化一下. 1.生成SSH-key生成一个ssh的key是必须的了，否则提交代码还得输入用户名跟密码. 执行命令：1$ ssh-keygen -t rsa -C &quot;you_email@you_email.com&quot; 然后一路回车下去就ok了，需要时把~/.s">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Git初始化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/23/Git初始化/" class="article-date">
+  <time datetime="2015-07-23T14:10:51.000Z" itemprop="datePublished">2015-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Ubuntu/">Ubuntu</a>►<a class="article-category-link" href="/categories/Ubuntu/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git初始化
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每次安装完系统，然后就是安装各种各样的东西，遇到不会的就去<a href="http://www.baidu.com" target="_blank" rel="external">baidu</a>，真是浪费时间，现在把问题搜集起来，尽量记着.</p>
+<p>安装完Git，首先肯定是要初始化一下.</p>
+<h3 id="1-生成SSH-key"><a href="#1-生成SSH-key" class="headerlink" title="1.生成SSH-key"></a>1.生成SSH-key</h3><p>生成一个ssh的key是必须的了，否则提交代码还得输入用户名跟密码.</p>
+<p>执行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"you_email@you_email.com"</span></div></pre></td></tr></table></figure></p>
+<p>然后一路回车下去就ok了，需要时把<code>~/.ssh/id_rsa.pub</code>文件里面的内容复制到网站的密钥库就可以.</p>
+<h3 id="2-填写Git的一些默认信息"><a href="#2-填写Git的一些默认信息" class="headerlink" title="2.填写Git的一些默认信息"></a>2.填写Git的一些默认信息</h3><p>为自己提交的代码设置一个用户名跟邮箱吧.</p>
+<p>设置用户名:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"you_name"</span></div></pre></td></tr></table></figure>
+<p>设置邮箱:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.email <span class="string">"you_email@you_email.com"</span></div></pre></td></tr></table></figure>
+<p>这样工作起来就方便多了.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/07/23/Git初始化/" data-id="cj5js51k2000cmlygpvggg5r4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/初始化/">初始化</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/23/32位兼容库安装/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          32位兼容库安装
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/22/CSDN博客更新说明/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSDN博客说明</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSDN/">CSDN</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chrome/">Chrome</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/Git/">Git</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/32位依赖库/">32位依赖库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android常见问题/">Android常见问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSDN博客/">CSDN博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIF动画/">GIF动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StateButton/">StateButton</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Uri获取图片路径/">Uri获取图片路径</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/useragent/">useragent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webview/">webview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/初始化/">初始化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发经验总结/">开发经验总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建博客/">搭建博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本适配/">版本适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义View/">自定义View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/32位依赖库/" style="font-size: 10px;">32位依赖库</a> <a href="/tags/Android常见问题/" style="font-size: 10px;">Android常见问题</a> <a href="/tags/CSDN博客/" style="font-size: 10px;">CSDN博客</a> <a href="/tags/GIF动画/" style="font-size: 10px;">GIF动画</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/StateButton/" style="font-size: 10px;">StateButton</a> <a href="/tags/Uri获取图片路径/" style="font-size: 10px;">Uri获取图片路径</a> <a href="/tags/useragent/" style="font-size: 10px;">useragent</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/初始化/" style="font-size: 10px;">初始化</a> <a href="/tags/开发经验总结/" style="font-size: 10px;">开发经验总结</a> <a href="/tags/搭建博客/" style="font-size: 10px;">搭建博客</a> <a href="/tags/版本适配/" style="font-size: 20px;">版本适配</a> <a href="/tags/自定义View/" style="font-size: 10px;">自定义View</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/11/Run for a better life/">Run for a better life</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/09/webview问题/">webview问题</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/06/Chrome自定义UserAgent/">Chrome自定义UserAgent</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/31/自定义View的一般步骤/">自定义View的一般步骤</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/31/ubuntu动态截图，制作GIF动画/">ubuntu动态截图，制作GIF动画</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

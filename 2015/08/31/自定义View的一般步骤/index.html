@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>自定义View的一般步骤 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自定义View应该是Android开发比较深入的内容，但又是在开发过程中必不可少的技能，总体来说，分为一下几步:  在attr.xml文件里声明自定义View需要用到的参数，这些参数也是可以在布局文件中直接使用； 布局文件中使用该View 构造方法中获取自定义属性 重写onMeasure()方法 重写layout()方法 重写onDraw()方法 如有需要继续重写View继承过来的其他方法,前面的">
+<meta name="keywords" content="自定义View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义View的一般步骤">
+<meta property="og:url" content="http://yoursite.com/2015/08/31/自定义View的一般步骤/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="自定义View应该是Android开发比较深入的内容，但又是在开发过程中必不可少的技能，总体来说，分为一下几步:  在attr.xml文件里声明自定义View需要用到的参数，这些参数也是可以在布局文件中直接使用； 布局文件中使用该View 构造方法中获取自定义属性 重写onMeasure()方法 重写layout()方法 重写onDraw()方法 如有需要继续重写View继承过来的其他方法,前面的">
+<meta property="og:updated_time" content="2017-07-23T15:23:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义View的一般步骤">
+<meta name="twitter:description" content="自定义View应该是Android开发比较深入的内容，但又是在开发过程中必不可少的技能，总体来说，分为一下几步:  在attr.xml文件里声明自定义View需要用到的参数，这些参数也是可以在布局文件中直接使用； 布局文件中使用该View 构造方法中获取自定义属性 重写onMeasure()方法 重写layout()方法 重写onDraw()方法 如有需要继续重写View继承过来的其他方法,前面的">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-自定义View的一般步骤" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/31/自定义View的一般步骤/" class="article-date">
+  <time datetime="2015-08-31T15:27:51.000Z" itemprop="datePublished">2015-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      自定义View的一般步骤
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>自定义View应该是<code>Android开发</code>比较深入的内容，但又是在开发过程中必不可少的技能，总体来说，分为一下几步:</strong></p>
+<ul>
+<li>在attr.xml文件里声明自定义View需要用到的参数，这些参数也是可以在布局文件中直接使用；</li>
+<li>布局文件中使用该View</li>
+<li>构造方法中获取自定义属性</li>
+<li>重写onMeasure()方法</li>
+<li>重写layout()方法</li>
+<li>重写onDraw()方法</li>
+<li><p>如有需要继续重写View继承过来的其他方法,前面的步骤也不是全部必须的，应根据项目需求灵活使用</p>
+<p><strong>下面以自定义QQ5.0主页菜单<code>SlidingMenu</code>为例，介绍自定义View，<a href="https://github.com/xing634325131/QQWapper" target="_blank" rel="external">项目Demo地址</a>：</strong></p>
+</li>
+</ul>
+<p>1.如果没有attr.xml文件，可以建立<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"rightPadding"</span> <span class="attr">format</span>=<span class="string">"dimension"</span>&gt;</span><span class="tag">&lt;/<span class="name">attr</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"SlidingMenu"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"rightPadding"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>rightPadding</code>的含义为菜单展示时，菜单右侧距内容页面的距离</p>
+<p>2.布局文件中使用该View<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:sliding</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:background</span>=<span class="string">"@drawable/qq_com_bg_pic"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">com.gugutian.qqwapper.widget.SlidingMenu</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/main_sm"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">sliding:rightPadding</span>=<span class="string">"50dp"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">            <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</div><div class="line"></div><div class="line">            <span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/menu_main"</span>/&gt;</span></div><div class="line"></div><div class="line">            <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">                <span class="attr">android:id</span>=<span class="string">"@+id/main_content_ly"</span></div><div class="line">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">                <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">                <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</div><div class="line"></div><div class="line">                <span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/main_content_fragment"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">com.gugutian.qqwapper.widget.SlidingMenu</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>SlidingMenu</code>为自定义View，包含了菜单页跟内容页，具体可以参考QQ5.0页面。<code>sliding:rightPadding=&quot;50dp&quot;</code>这里是使用自定义属性，前面记得还要声明该命名空间<code>xmlns:sliding=&quot;http://schemas.android.com/apk/res-auto&quot;</code></p>
+<p>3.构造方法中获取自定义属性<br>具体获取自定义View的属性在携带三个参数的构造方法中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">SlidingMenu</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line"></div><div class="line">    WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">    DisplayMetrics outMetrics = <span class="keyword">new</span> DisplayMetrics();</div><div class="line">    wm.getDefaultDisplay().getMetrics(outMetrics);</div><div class="line">    mScreenWidth = outMetrics.widthPixels;</div><div class="line"></div><div class="line">    mLeftMenuPaddingRight = (<span class="keyword">int</span>) TypedValue.applyDimension(</div><div class="line">        TypedValue.COMPLEX_UNIT_DIP,</div><div class="line">        mLeftMenuPaddingRight,</div><div class="line">        context.getResources().getDisplayMetrics());</div><div class="line"></div><div class="line">    TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SlidingMenu, defStyleAttr, <span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, n = typedArray.getIndexCount(); i &lt; n; i++) &#123;</div><div class="line">        <span class="keyword">int</span> attr = typedArray.getIndex(i);</div><div class="line">        <span class="keyword">switch</span> (attr) &#123;</div><div class="line">            <span class="keyword">case</span> R.styleable.SlidingMenu_rightPadding:</div><div class="line">                mLeftMenuPaddingRight = typedArray.getDimensionPixelSize(attr, (<span class="keyword">int</span>)TypedValue.applyDimension(</div><div class="line">                        TypedValue.COMPLEX_UNIT_DIP,</div><div class="line">                        mLeftMenuPaddingRight,</div><div class="line">                        context.getResources().getDisplayMetrics()));</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    typedArray.recycle();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4.重写onMeasure()方法<br>该方法测绘及设定该<code>View</code>所有的<code>ChildView</code>的大小<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(!mOnce) &#123;</div><div class="line">        mWapper = (LinearLayout) getChildAt(<span class="number">0</span>);</div><div class="line">        mLeftMenuVg = (ViewGroup) mWapper.getChildAt(<span class="number">0</span>);</div><div class="line">        mMainContentVg = (ViewGroup) mWapper.getChildAt(<span class="number">1</span>);</div><div class="line">        mLeftMenuWidth = mLeftMenuVg.getLayoutParams().width = mScreenWidth - mLeftMenuPaddingRight;</div><div class="line">        mMainContentVg.getLayoutParams().width = mScreenWidth;</div><div class="line">        mOnce = !mOnce;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>5.重写layout()方法<br>设定该<code>View</code>所有<code>ChildView</code>的位置并在界面中展现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onLayout(changed, l, t, r, b);</div><div class="line">    <span class="keyword">if</span>(changed) &#123;</div><div class="line">        scrollTo(mLeftMenuWidth, <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>6.其他</p>
+<p><strong>下面是完整的<code>SlidingMenu</code>的代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SlidingMenu</span> <span class="keyword">extends</span> <span class="title">HorizontalScrollView</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> LinearLayout mWapper;</div><div class="line">    <span class="keyword">private</span> ViewGroup mLeftMenuVg;</div><div class="line">    <span class="keyword">private</span> ViewGroup mMainContentVg;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mOnce = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mScreenWidth;</div><div class="line">    <span class="comment">// dp</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mLeftMenuPaddingRight = <span class="number">50</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mLeftMenuWidth;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mIsLeftMenuShown = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SlidingMenu</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line"></div><div class="line">        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">        DisplayMetrics outMetrics = <span class="keyword">new</span> DisplayMetrics();</div><div class="line">        wm.getDefaultDisplay().getMetrics(outMetrics);</div><div class="line">        mScreenWidth = outMetrics.widthPixels;</div><div class="line"></div><div class="line">        mLeftMenuPaddingRight = (<span class="keyword">int</span>) TypedValue.applyDimension(</div><div class="line">                TypedValue.COMPLEX_UNIT_DIP,</div><div class="line">                mLeftMenuPaddingRight,</div><div class="line">                context.getResources().getDisplayMetrics());</div><div class="line"></div><div class="line">        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.SlidingMenu, defStyleAttr, <span class="number">0</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, n = typedArray.getIndexCount(); i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">int</span> attr = typedArray.getIndex(i);</div><div class="line">            <span class="keyword">switch</span> (attr) &#123;</div><div class="line">                <span class="keyword">case</span> R.styleable.SlidingMenu_rightPadding:</div><div class="line">                    mLeftMenuPaddingRight = typedArray.getDimensionPixelSize(attr, (<span class="keyword">int</span>)TypedValue.applyDimension(</div><div class="line">                            TypedValue.COMPLEX_UNIT_DIP,</div><div class="line">                            mLeftMenuPaddingRight,</div><div class="line">                            context.getResources().getDisplayMetrics()));</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        typedArray.recycle();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SlidingMenu</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(context, attrs, <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SlidingMenu</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(context, <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(!mOnce) &#123;</div><div class="line">            mWapper = (LinearLayout) getChildAt(<span class="number">0</span>);</div><div class="line">            mLeftMenuVg = (ViewGroup) mWapper.getChildAt(<span class="number">0</span>);</div><div class="line">            mMainContentVg = (ViewGroup) mWapper.getChildAt(<span class="number">1</span>);</div><div class="line">            mLeftMenuWidth = mLeftMenuVg.getLayoutParams().width = mScreenWidth - mLeftMenuPaddingRight;</div><div class="line">            mMainContentVg.getLayoutParams().width = mScreenWidth;</div><div class="line">            mOnce = !mOnce;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onLayout(changed, l, t, r, b);</div><div class="line">        <span class="keyword">if</span>(changed) &#123;</div><div class="line">            scrollTo(mLeftMenuWidth, <span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> action = ev.getAction();</div><div class="line">        <span class="keyword">switch</span> (action) &#123;</div><div class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</div><div class="line">                <span class="keyword">int</span> scrollX = getScrollX();</div><div class="line">                <span class="keyword">if</span>(scrollX &gt;= mLeftMenuWidth / <span class="number">2</span>) &#123;</div><div class="line">                    smoothScrollTo(mLeftMenuWidth, <span class="number">0</span>);</div><div class="line">                    mIsLeftMenuShown = <span class="keyword">false</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    smoothScrollTo(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">                    mIsLeftMenuShown = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onTouchEvent(ev);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showLeftMenu</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(!isLeftMenuShown()) &#123;</div><div class="line">            smoothScrollTo(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">            mIsLeftMenuShown = <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hideLeftMenu</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(isLeftMenuShown()) &#123;</div><div class="line">            smoothScrollTo(mLeftMenuWidth, <span class="number">0</span>);</div><div class="line">            mIsLeftMenuShown = <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLeftMenuShown</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mIsLeftMenuShown;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onScrollChanged</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> oldl, <span class="keyword">int</span> oldt)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onScrollChanged(l, t, oldl, oldt);</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">float</span> scale = l * <span class="number">1.0f</span> / mLeftMenuWidth;<span class="comment">//1.0~0 注意1.0f的乘法，使之成为float类型</span></div><div class="line">        <span class="keyword">float</span> contentScale = <span class="number">0.8f</span> + <span class="number">0.2f</span> * scale;</div><div class="line">        ViewHelper.setPivotX(mMainContentVg, <span class="number">0</span>);</div><div class="line">        ViewHelper.setPivotY(mMainContentVg, mMainContentVg.getHeight() / <span class="number">2</span>);</div><div class="line">        ViewHelper.setScaleX(mMainContentVg, contentScale);</div><div class="line">        ViewHelper.setScaleY(mMainContentVg, contentScale);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> menuTranslationShow = <span class="number">0.7f</span>;</div><div class="line">        ViewHelper.setTranslationX(mLeftMenuVg, l * menuTranslationShow);</div><div class="line">        <span class="keyword">float</span> menuScale = <span class="number">1.0f</span> - <span class="number">0.2f</span> * scale;</div><div class="line">        ViewHelper.setScaleX(mLeftMenuVg, menuScale);</div><div class="line">        ViewHelper.setScaleY(mLeftMenuVg, menuScale);</div><div class="line">        <span class="keyword">float</span> menuAlphaScale = <span class="number">1.0f</span> - <span class="number">0.5f</span> * scale;</div><div class="line">        ViewHelper.setAlpha(mLeftMenuVg, menuAlphaScale);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>基本上只要按照以上几步实现，理清其中的逻辑关系，这种模板式的自定义View还是比较简单的。</strong></p>
+<p>代码地址：<a href="https://github.com/xing634325131/QQWapper" target="_blank" rel="external">https://github.com/xing634325131/QQWapper</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/08/31/自定义View的一般步骤/" data-id="cj5js51kg000tmlyguaglyokn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自定义View/">自定义View</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/06/Chrome自定义UserAgent/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Chrome自定义UserAgent
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/31/ubuntu动态截图，制作GIF动画/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ubuntu动态截图，制作GIF动画</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSDN/">CSDN</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Chrome/">Chrome</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/Git/">Git</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/32位依赖库/">32位依赖库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android常见问题/">Android常见问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSDN博客/">CSDN博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIF动画/">GIF动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StateButton/">StateButton</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Uri获取图片路径/">Uri获取图片路径</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/useragent/">useragent</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webview/">webview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/初始化/">初始化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发经验总结/">开发经验总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建博客/">搭建博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本适配/">版本适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义View/">自定义View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/32位依赖库/" style="font-size: 10px;">32位依赖库</a> <a href="/tags/Android常见问题/" style="font-size: 10px;">Android常见问题</a> <a href="/tags/CSDN博客/" style="font-size: 10px;">CSDN博客</a> <a href="/tags/GIF动画/" style="font-size: 10px;">GIF动画</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/StateButton/" style="font-size: 10px;">StateButton</a> <a href="/tags/Uri获取图片路径/" style="font-size: 10px;">Uri获取图片路径</a> <a href="/tags/useragent/" style="font-size: 10px;">useragent</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/初始化/" style="font-size: 10px;">初始化</a> <a href="/tags/开发经验总结/" style="font-size: 10px;">开发经验总结</a> <a href="/tags/搭建博客/" style="font-size: 10px;">搭建博客</a> <a href="/tags/版本适配/" style="font-size: 20px;">版本适配</a> <a href="/tags/自定义View/" style="font-size: 10px;">自定义View</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/11/Run for a better life/">Run for a better life</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/09/webview问题/">webview问题</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/06/Chrome自定义UserAgent/">Chrome自定义UserAgent</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/31/自定义View的一般步骤/">自定义View的一般步骤</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/31/ubuntu动态截图，制作GIF动画/">ubuntu动态截图，制作GIF动画</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
