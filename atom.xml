@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>古古天</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.gugutian.com/"/>
+  <updated>2017-07-23T15:23:11.000Z</updated>
+  <id>http://blog.gugutian.com/</id>
+  
+  <author>
+    <name>古古天</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Run for a better life</title>
+    <link href="http://blog.gugutian.com/2016/09/11/Run%20for%20a%20better%20life/"/>
+    <id>http://blog.gugutian.com/2016/09/11/Run for a better life/</id>
+    <published>2016-09-11T12:35:42.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文最初分享在&lt;code&gt;卡牛玩卡互助学堂&lt;/code&gt;微信群，后期整理而成。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我大概从高中起就有跑步的习惯，不过之前都是短距离慢跑，三五公里的样子，现在倾向于长跑（&amp;gt;10km），时间足够的情况下长跑是很舒服的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://blog.gugutian.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webview问题</title>
+    <link href="http://blog.gugutian.com/2015/11/09/webview%E9%97%AE%E9%A2%98/"/>
+    <id>http://blog.gugutian.com/2015/11/09/webview问题/</id>
+    <published>2015-11-09T09:35:42.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.Uncaught ReferenceError: NPObject deleted&lt;br&gt;如果js注入遇到此类问题，无法执行，可以考虑一下是不是用了iframe框架导致的。&lt;/p&gt;
+&lt;p&gt;2.uri的&lt;code&gt;getQueryParameter()&lt;/code&gt;引起的
+    
+    </summary>
+    
+    
+      <category term="webview" scheme="http://blog.gugutian.com/tags/webview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chrome自定义UserAgent</title>
+    <link href="http://blog.gugutian.com/2015/11/06/Chrome%E8%87%AA%E5%AE%9A%E4%B9%89UserAgent/"/>
+    <id>http://blog.gugutian.com/2015/11/06/Chrome自定义UserAgent/</id>
+    <published>2015-11-06T04:41:10.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;怎么样用Chrome实现自定义UserAgent呢&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;目前我的Chrome版本为&lt;code&gt;44.0.2403.157 (64-bit)&lt;/code&gt;，可以采用下面的方式实现：&lt;/p&gt;
+&lt;p&gt;1.点击右键－审查元素（&lt;code&gt;
+    
+    </summary>
+    
+      <category term="Chrome" scheme="http://blog.gugutian.com/categories/Chrome/"/>
+    
+    
+      <category term="useragent" scheme="http://blog.gugutian.com/tags/useragent/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自定义View的一般步骤</title>
+    <link href="http://blog.gugutian.com/2015/08/31/%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9A%84%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4/"/>
+    <id>http://blog.gugutian.com/2015/08/31/自定义View的一般步骤/</id>
+    <published>2015-08-31T15:27:51.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;自定义View应该是&lt;code&gt;Android开发&lt;/code&gt;比较深入的内容，但又是在开发过程中必不可少的技能，总体来说，分为一下几步:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在attr.xml文件里声明自定义View需要用到的参数，这些参数也是可以
+    
+    </summary>
+    
+      <category term="Android" scheme="http://blog.gugutian.com/categories/Android/"/>
+    
+    
+      <category term="自定义View" scheme="http://blog.gugutian.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89View/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu动态截图，制作GIF动画</title>
+    <link href="http://blog.gugutian.com/2015/07/31/ubuntu%E5%8A%A8%E6%80%81%E6%88%AA%E5%9B%BE%EF%BC%8C%E5%88%B6%E4%BD%9CGIF%E5%8A%A8%E7%94%BB/"/>
+    <id>http://blog.gugutian.com/2015/07/31/ubuntu动态截图，制作GIF动画/</id>
+    <published>2015-07-31T09:52:13.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-安装-gtk-recordmydesktop-来录制屏幕-安装-mplayer-將视频分解成单帧图片-安装-imagemagick-將单帧图片压缩成一张-gif&quot;&gt;&lt;a href=&quot;#1-安装-gtk-recordmydesktop-来录制屏幕-安装-mpla
+    
+    </summary>
+    
+      <category term="Ubuntu" scheme="http://blog.gugutian.com/categories/Ubuntu/"/>
+    
+    
+      <category term="GIF动画" scheme="http://blog.gugutian.com/tags/GIF%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决StateButton适配的问题</title>
+    <link href="http://blog.gugutian.com/2015/07/31/%E8%A7%A3%E5%86%B3StateButton%E9%80%82%E9%85%8D%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://blog.gugutian.com/2015/07/31/解决StateButton适配的问题/</id>
+    <published>2015-07-31T09:27:15.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;定制一个以图片为背景的按钮,并且在按下时设置其透明度为原来的35%,之前我们是这么实现的:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/
+    
+    </summary>
+    
+      <category term="Android" scheme="http://blog.gugutian.com/categories/Android/"/>
+    
+    
+      <category term="版本适配" scheme="http://blog.gugutian.com/tags/%E7%89%88%E6%9C%AC%E9%80%82%E9%85%8D/"/>
+    
+      <category term="StateButton" scheme="http://blog.gugutian.com/tags/StateButton/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决4.4以上系统无法根据Uri正确获取图片路径的问题</title>
+    <link href="http://blog.gugutian.com/2015/07/31/%E8%A7%A3%E5%86%B34.4%E4%BB%A5%E4%B8%8A%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E6%A0%B9%E6%8D%AEUri%E6%AD%A3%E7%A1%AE%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://blog.gugutian.com/2015/07/31/解决4.4以上系统无法根据Uri正确获取图片路径的问题/</id>
+    <published>2015-07-31T03:05:44.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当需要获取一张手机里的图片时,我们会调起图片浏览器选择图片,图片浏览器会返回图片的&lt;code&gt;Uri&lt;/code&gt;,然后根据&lt;code&gt;Uri&lt;/code&gt;就可以得到图片的路径,这段代码在4.4一下的系统是没有问题的:&lt;/p&gt;
+&lt;figure class=&quot;highligh
+    
+    </summary>
+    
+      <category term="Android" scheme="http://blog.gugutian.com/categories/Android/"/>
+    
+    
+      <category term="Uri获取图片路径" scheme="http://blog.gugutian.com/tags/Uri%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/"/>
+    
+      <category term="版本适配" scheme="http://blog.gugutian.com/tags/%E7%89%88%E6%9C%AC%E9%80%82%E9%85%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android常见问题及开发经验总结</title>
+    <link href="http://blog.gugutian.com/2015/07/31/Android%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/"/>
+    <id>http://blog.gugutian.com/2015/07/31/Android常见问题及开发经验总结/</id>
+    <published>2015-07-31T02:23:16.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原文地址:&lt;a href=&quot;http://blog.csdn.net/shaoyezhangliwei/article/details/46683705&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/shaoyez
+    
+    </summary>
+    
+      <category term="Android" scheme="http://blog.gugutian.com/categories/Android/"/>
+    
+    
+      <category term="Android常见问题" scheme="http://blog.gugutian.com/tags/Android%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+    
+      <category term="开发经验总结" scheme="http://blog.gugutian.com/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>32位兼容库安装</title>
+    <link href="http://blog.gugutian.com/2015/07/23/32%E4%BD%8D%E5%85%BC%E5%AE%B9%E5%BA%93%E5%AE%89%E8%A3%85/"/>
+    <id>http://blog.gugutian.com/2015/07/23/32位兼容库安装/</id>
+    <published>2015-07-23T14:13:51.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;遇到这个问题不止一次了&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="Ubuntu" scheme="http://blog.gugutian.com/categories/Ubuntu/"/>
+    
+    
+      <category term="32位依赖库" scheme="http://blog.gugutian.com/tags/32%E4%BD%8D%E4%BE%9D%E8%B5%96%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git初始化</title>
+    <link href="http://blog.gugutian.com/2015/07/23/Git%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <id>http://blog.gugutian.com/2015/07/23/Git初始化/</id>
+    <published>2015-07-23T14:10:51.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;每次安装完系统，然后就是安装各种各样的东西，遇到不会的就去&lt;a href=&quot;http://www.baidu.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;baidu&lt;/a&gt;，真是浪费时间，现在把问题搜集起来，尽量记着.&lt;/p&gt;
+&lt;p&gt;安装完Git
+    
+    </summary>
+    
+      <category term="Ubuntu" scheme="http://blog.gugutian.com/categories/Ubuntu/"/>
+    
+      <category term="Git" scheme="http://blog.gugutian.com/categories/Ubuntu/Git/"/>
+    
+    
+      <category term="Git" scheme="http://blog.gugutian.com/tags/Git/"/>
+    
+      <category term="初始化" scheme="http://blog.gugutian.com/tags/%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSDN博客说明</title>
+    <link href="http://blog.gugutian.com/2015/07/22/CSDN%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/"/>
+    <id>http://blog.gugutian.com/2015/07/22/CSDN博客更新说明/</id>
+    <published>2015-07-22T07:13:51.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用上了这个高大上的采用&lt;em&gt;makedown语法&lt;/em&gt;编辑的博客,CSDN博客就不更新了,原博地址&lt;a href=&quot;http://blog.csdn.net/xing634325131&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://bl
+    
+    </summary>
+    
+      <category term="CSDN" scheme="http://blog.gugutian.com/categories/CSDN/"/>
+    
+    
+      <category term="CSDN博客" scheme="http://blog.gugutian.com/tags/CSDN%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo搭建blog</title>
+    <link href="http://blog.gugutian.com/2015/07/21/Hexo%E6%90%AD%E5%BB%BAblog/"/>
+    <id>http://blog.gugutian.com/2015/07/21/Hexo搭建blog/</id>
+    <published>2015-07-21T10:00:56.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;听说最近用&lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;和&lt;a href=&quot;https://www.github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;G
+    
+    </summary>
+    
+      <category term="Ubuntu" scheme="http://blog.gugutian.com/categories/Ubuntu/"/>
+    
+    
+      <category term="Hexo" scheme="http://blog.gugutian.com/tags/Hexo/"/>
+    
+      <category term="搭建博客" scheme="http://blog.gugutian.com/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2014总结及2015展望</title>
+    <link href="http://blog.gugutian.com/2015/02/02/2014%E6%80%BB%E7%BB%93%E5%8F%8A2015%E5%B1%95%E6%9C%9B/"/>
+    <id>http://blog.gugutian.com/2015/02/02/2014总结及2015展望/</id>
+    <published>2015-02-01T17:35:42.000Z</published>
+    <updated>2017-07-23T15:23:11.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Xing634325131-的-2014-gt-2015&quot;&gt;&lt;a href=&quot;#Xing634325131-的-2014-gt-2015&quot; class=&quot;headerlink&quot; title=&quot;Xing634325131 的 2014 -&amp;gt; 2015&quot;&gt;&lt;/a
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://blog.gugutian.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>
